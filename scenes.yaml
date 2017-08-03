@@ -1,0 +1,7 @@
+- name: God kväll
+  entities:
+    group.evening_lighting: on
+
+- name: God natt
+  entities:
+    group.evening_lighting: off

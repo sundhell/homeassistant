@@ -1,0 +1,194 @@
+---
+# Activate scene "god_natt" at 00:30
+- id: bedtime
+  alias: "Läggdags"
+  trigger:
+    - platform: time
+      at: 00:30:00
+  action:
+    - service: scene.turn_on
+      entity_id:
+        - scene.god_natt
+
+
+# Push notice to iOS when porch door opens when no one is home
+- id: notify_when_porch_door_opens
+  alias: "Notifiering att altandörr öppnades"
+  trigger:
+    - entity_id: binary_sensor.altandorr_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - data:
+        message: "Altandörren öppnandes trots att ingen är hemma"
+        title: "Altandörr öppen"
+      service: notify.ios_patriks_iphone_app
+
+
+# Push notice to iOS when front door opens when no one is home
+- id: notify_when_front_door_opens
+  alias: "Notifiering att ytterdörr öppnades"
+  trigger:
+    - entity_id: binary_sensor.ytterdorr_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - data:
+        message: "Ytterdörren öppnades trots att ingen är hemma"
+        title: "Ytterdörr öppen"
+      service: notify.ios_patriks_iphone_app
+
+
+# Push notice to iOS when movement is registered in stairway when no one is home
+- id: notify_at_movement_in_stairway
+  alias: "Notifiering vid rörelse i trapp"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: notify.ios_patriks_iphone_app
+      data:
+        message: "Rörelse i trappen trots att ingen är hemma"
+        title: "Rörelse i trapp"
+
+
+# Turn on stairway lights when movement is registered
+- id: turn_on_stairway_lightning_at_movement
+  alias: "Tänd trappbelysning vid rörelse"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+  action:
+    - service: light.turn_on
+      entity_id: light.trappbelysning
+      data:
+        brightness: 25
+        color_name: white
+
+
+# Turn off stairway lights when movement is no longer registered
+- id: turn_off_stairway_lightning_at_no_movement
+  alias: "Släck trappbelysning vid ingen rörelse"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'on'
+      platform: state
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.trappbelysning
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.trappbelysning
+
+
+# Turn on outdoor lighting at sunset
+- id: outdoor_lighting_at_sunset
+  alias: "Tänd utebelysning vid solnedgång"
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.outdoor_lighting
+
+
+# Turn on window and accent lighting when lux is below 5
+- id: window_and_accent_lighting_when_lux_is_low
+  alias: "Tänd fönster och accentbelysning när lux är under 5"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+    - platform: state
+      entity_id: group.all_devices
+      from: 'not_home'
+      to: 'home'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.window_lighting
+        - group.accent_lighting
+
+
+# Ask if lighting should be turned off when lux increases
+- id: ask_if_lighting_should_be_turned_off
+  alias: "Fråga om lampor ska släckas när lux ökar"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.trapp_luminance
+      above: 10
+  condition:
+    - condition: state
+      entity_id: group.window_lighting
+      state: 'on'
+    - condition: state
+      entity_id: group.accent_lighting
+      state: 'on'
+  action:
+    - service: notify.ios_patriks_iphone_app
+      data:
+        message: "Det ser ut att ljusna, vill du släcka lamporna?"
+        data:
+          push:
+            category: "EVENING_ACCENT_LIGHTS"
+
+- id: turn_off_lights_from_ios_push
+  alias: "Släck lamporna om det anges i appen"
+  trigger:
+    - platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: TURN_OFF_LIGHTS
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - group.window_lighting
+        - group.accent_lighting
+
+
+# Turn on window lighting at sunset when no one is home
+- id: window_lighting_at_sunset_when_no_one_is_home
+  alias: "Tänd fönsterbelysning vid solnedgång när ingen är hemma"
+  trigger:
+    - platform: sun
+      event: sunset
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.window_lighting
