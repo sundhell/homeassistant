@@ -41,6 +41,7 @@ window_lighting:
     - switch.fonster_i_kok
     - switch.fonster_i_gastrum
     - switch.fonster_i_sovrum
+    - switch.fonster_i_eiras_rum
 
 outdoor_lighting:
   name: Utebelysning
