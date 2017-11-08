@@ -84,8 +84,8 @@ people:
   name: Personer
   view: 'no'
   entities:
-    - device_tracker.annas_iphone_app
-    - device_tracker.patriks_iphone_app
+    - device_tracker.annas_iphone
+    - device_tracker.owntracks_patrik
 
 commute:
   name: Västtrafik
