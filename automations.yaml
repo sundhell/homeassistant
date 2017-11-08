@@ -11,7 +11,7 @@
         - scene.god_natt
 
 
-# Push notice to iOS when porch door opens when no one is home
+# Notify when porch door opens when no one is home
 - id: notify_when_porch_door_opens
   alias: "Notifiering att altandörr öppnades"
   trigger:
@@ -27,10 +27,10 @@
     - data:
         message: "Altandörren öppnandes trots att ingen är hemma"
         title: "Altandörr öppen"
-      service: notify.ios_patriks_iphone_app
+      service: notify.PUSHBULLET
 
 
-# Push notice to iOS when front door opens when no one is home
+# Notify when front door opens when no one is home
 - id: notify_when_front_door_opens
   alias: "Notifiering att ytterdörr öppnades"
   trigger:
@@ -46,10 +46,10 @@
     - data:
         message: "Ytterdörren öppnades trots att ingen är hemma"
         title: "Ytterdörr öppen"
-      service: notify.ios_patriks_iphone_app
+      service: notify.PUSHBULLET
 
 
-# Push notice to iOS when movement is registered in stairway when no one is home
+# Notify when movement is registered in stairway when no one is home
 - id: notify_at_movement_in_stairway
   alias: "Notifiering vid rörelse i trapp"
   trigger:
@@ -62,7 +62,7 @@
       entity_id: group.all_devices
       state: 'not_home'
   action:
-    - service: notify.ios_patriks_iphone_app
+    - service: notify.PUSHBULLET
       data:
         message: "Rörelse i trappen trots att ingen är hemma"
         title: "Rörelse i trapp"
@@ -135,44 +135,11 @@
     - condition: numeric_state
       entity_id: sensor.trapp_luminance
       below: 5
+    - condition: state
+      entity_id: input_boolean.sleep_mode
+      state: 'off'
   action:
     - service: homeassistant.turn_on
-      entity_id:
-        - group.window_lighting
-        - group.accent_lighting
-
-
-# Ask if lighting should be turned off when lux increases
-- id: ask_if_lighting_should_be_turned_off
-  alias: "Fråga om lampor ska släckas när lux ökar"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.trapp_luminance
-      above: 10
-  condition:
-    - condition: state
-      entity_id: group.window_lighting
-      state: 'on'
-    - condition: state
-      entity_id: group.accent_lighting
-      state: 'on'
-  action:
-    - service: notify.ios_patriks_iphone_app
-      data:
-        message: "Det ser ut att ljusna, vill du släcka lamporna?"
-        data:
-          push:
-            category: "EVENING_ACCENT_LIGHTS"
-
-- id: turn_off_lights_from_ios_push
-  alias: "Släck lamporna om det anges i appen"
-  trigger:
-    - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: TURN_OFF_LIGHTS
-  action:
-    - service: homeassistant.turn_off
       entity_id:
         - group.window_lighting
         - group.accent_lighting
