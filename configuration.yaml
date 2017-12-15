@@ -13,10 +13,19 @@ homeassistant:
     media_player.roku_1ws3al012963:
       friendly_name: Roku
     light.taklampor:
+      emulated_hue_hidden: true
       homebridge_hidden: true
+      google_assistant: false
+      hidden: true
+    light.utelampor:
+      emulated_hue_hidden: true
+      homebridge_hidden: true
+      google_assistant: false
       hidden: true
     light.utebelysning:
+      emulated_hue_hidden: true
       homebridge_hidden: true
+      google_assistant: false
       hidden: true
     binary_sensor.trapp_sensor:
       friendly_name: Trapp
@@ -33,10 +42,17 @@ homeassistant:
       homebridge_hidden: true
     sensor.yr_temperature:
       homebridge_hidden: true
+    sensor.trapp_battery:
+      hidden: false
+    sensor.ytterdorr_battery:
+      hidden: false
+    sensor.altandorr_battery:
+      hidden: false
 
   customize_domain:
     switch:
       icon: mdi:lightbulb
+      google_assistant_type: light
     media_player:
       homebridge_hidden: true
     device_tracker:
@@ -56,9 +72,11 @@ homeassistant:
     "sensor.altandorr*":
       hidden: true
 
-frontend:
-config:
-conversation:
+
+###########
+# LOGGING #
+###########
+
 history:
   exclude:
     entities:
@@ -68,32 +86,27 @@ logbook:
     entities:
       - sensor.mot_alvangen
 logger:
-  default: critical
-  logs:
-    homeassistant.components.rfxtrx: info
+  default: warn
+
+
+############
+# SERVICES #
+############
+
+frontend:
+config:
+conversation:
+map:
 sun:
 updater:
 ios:
-  push:
-    categories:
-      - name: Släck lampor
-        identifier: 'EVENING_ACCENT_LIGHTS'
-        actions:
-          - identifier: 'TURN_OFF_LIGHTS'
-            title: 'Ja'
-            activationMode: 'background'
-            authenticationRequired: 'no'
-            destructive: 'no'
-            behavior: 'default'
 discovery:
-  ignore:
-    - roku
-    - plex_mediaserver
-
 recorder:
   db_url: !secret recorder_db_url
 http:
   api_password: !secret http_api_password
+  ssl_certificate: /home/homeassistant/.homeassistant/cert.pem
+  ssl_key: /home/homeassistant/.homeassistant/privkey.pem
 influxdb:
   host: !secret influxdb_host
 tts:
@@ -102,9 +115,6 @@ rfxtrx:
   device: /dev/ttyUSB0
 zwave:
   usb_path: /dev/ttyUSB20
-tradfri:
-  host: !secret tradfri_host
-  api_key: !secret tradfri_api_key
 mqtt:
   broker: !secret mqtt_broker
   port: 1883
@@ -113,131 +123,39 @@ mqtt:
   password: !secret mqtt_password
 ifttt:
   key: !secret ifttt_key
-notify:
-  - name: Pushover
-    platform: pushover
-    api_key: !secret notify_pushover_api_key
-    user_key: !secret notify_pushover_user_key
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  api_key: !secret google_assistant_api_key
+  exposed_domains:
+    - switch
+    - light
+emulated_hue:
+  expose_by_default: true
+  exposed_domains:
+    - light
+    - switch
+telegram_bot:
+  - platform: polling
+    api_key: !secret notify_telegram_api_key
+    allowed_chat_ids:
+      - !secret notify_telegram_chat_id_1
+      - !secret notify_telegram_chat_id_2
 
 
-group: !include groups.yaml
-scene: !include scenes.yaml
-automation: !include automations.yaml
-zone: !include zones.yaml
+############
+# ENTITIES #
+############
 
-
-sensor:
-  - platform: yr
-    monitored_conditions:
-      - temperature
-      - windSpeed
-  - platform: vasttrafik
-    key: !secret sensor_vasttrafik_key
-    secret: !secret sensor_vasttrafik_secret
-    departures:
-      - name: Mot älvängen
-        from: Albotorget, Ale
-        heading: Älvängen resecentrum, Ale
-  - platform: command_line
-    name: CPU Temperatur
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
-  - platform: rfxtrx
-    devices:
-      0A520A0016010072370179:
-        name: Utomhus
-
-switch:
-  - platform: rfxtrx
-    signal_repetitions: 2
-    devices:
-      0b1100f8009963220c010f60:
-        name: Vind
-
-      # GDR2 A-2
-      7100a0041020000:
-        name: Trebenslampa
-
-      # GDR2 A-3
-      7100a0041030000:
-        name: Ljusbollar
-
-      # GDR2 A-4
-      7100a0041040000:
-        name: Kristallampa
-
-      # GDR2 B-2
-      7100a0042020000:
-        name: Fönster i kök
-
-      # GDR2 B-3
-      7100a0042030000:
-        name: Fönster i gästrum
-
-      # GDR2 B-4
-      7100a0042040000:
-        name: Fönster i sovrum
-
-      # GDR2 C-1
-      7100a0043010000:
-        name: Månlampa
-
-      # GDR2 C-2
-      7100a0043020000:
-        name: Fönster i Eiras rum
-
-      0b1100030001010201040f70:
-        name: Altan
-
-      0b1100030001010101040f70:
-        name: Framsida
-
-device_tracker:
-  - platform: tomato
-    host: !secret device_tracker_tomato_host
-    username: !secret device_tracker_tomato_username
-    password: !secret device_tracker_tomato_password
-    http_id: !secret device_tracker_tomato_http_id
-    interval_seconds: 600
-    consider_home: 1900
-    track_new_devices: 'no'
-  - platform: owntracks
-
-# media_player:
-#   - platform: roku
-#   - platform: plex
-#   - platform: spotify
-#     client_id: !secret media_player_spotify_client_id
-#     client_secret: !secret media_player_spotify_secret
-
-light:
-  - platform: limitlessled
-    bridges:
-      - host: !secret light_limitlessled_host
-        port: 5987
-        groups:
-          - number: 1
-            name: Trappbelysning
-            type: rgbww
-            fade: 'on'
-
-binary_sensor:
-  platform: rfxtrx
-  devices:
-    0b1100030001010101040f70:
-      name: Dörrklocka
-
-input_boolean:
-  guest_mode:
-    name: Gästläge
-    initial: 'off'
-    icon: mdi:account-multiple
-  sleep_mode:
-    name: Sovläge
-    initial: 'off'
-    icon: mdi:hotel
-  alarm_mode:
-    name: Larmläge
-    initial: 'off'
-    icon: mdi:alarm-light
+group: !include_dir_merge_named groups
+scene: !include_dir_merge_list scenes
+automation: !include_dir_merge_list automations
+zone: !include_dir_merge_list zones
+sensor: !include_dir_merge_list sensors
+switch: !include_dir_merge_list switches
+light: !include_dir_merge_list lights
+notify: !include_dir_merge_list notifications
+device_tracker: !include_dir_merge_list device_trackers
+media_player: !include_dir_merge_list media_players
+input_boolean: !include_dir_merge_named input_booleans

@@ -1,0 +1,60 @@
+---
+- id: bedtime
+  alias: "Läggdags"
+  trigger:
+    - platform: time
+      at: 00:30:00
+  action:
+    - service: scene.turn_on
+      entity_id:
+        - scene.god_natt
+
+- id: outdoor_lights_at_sunset
+  alias: "Tänd utebelysning vid solnedgång"
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.outdoor_lights
+
+- id: window_and_accent_lights_when_lux_is_low
+  alias: "Tänd fönster och accentbelysning när lux är under 5"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+    - platform: state
+      entity_id: group.all_devices
+      from: 'not_home'
+      to: 'home'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+    - condition: state
+      entity_id: input_boolean.sleep_mode
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.window_lights
+        - group.accent_lights
+
+- id: window_lights_at_sunset_when_no_one_is_home
+  alias: "Tänd fönsterbelysning vid solnedgång när ingen är hemma"
+  trigger:
+    - platform: sun
+      event: sunset
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - group.window_lights

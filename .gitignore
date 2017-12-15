@@ -1,15 +1,18 @@
 deps/
 tts/
+www/
 
 .DS_STORE
-*.xml
-*.conf
-OZW_Log.txt
-zwave_device_config.yaml
-home-assistant.log
-home-assistant_v2.db
-secrets.yaml
-known_devices.yaml
-pyozw.sqlite
 .uuid
 .spotify-token-cache
+*.xml
+*.conf
+*.pem
+*.json
+*.txt
+*.log
+*.db
+*.sqlite
+zwave_device_config.yaml
+secrets.yaml
+known_devices.yaml

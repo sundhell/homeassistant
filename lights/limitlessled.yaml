@@ -1,0 +1,10 @@
+---
+- platform: limitlessled
+  bridges:
+    - host: !secret light_limitlessled_host
+      port: 5987
+      groups:
+        - number: 1
+          name: Trappbelysning
+          type: rgbww
+          fade: 'on'

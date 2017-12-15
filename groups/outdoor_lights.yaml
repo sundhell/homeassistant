@@ -1,0 +1,9 @@
+---
+outdoor_lights:
+  name: Utebelysning
+  view: 'no'
+  entities:
+    - switch.altan
+    - switch.framsida
+    - light.baksida
+    - light.framsida

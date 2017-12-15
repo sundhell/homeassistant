@@ -1,0 +1,11 @@
+---
+weather:
+  name: Väder
+  view: 'no'
+  entities:
+    - sensor.utomhus_temperature
+    - sensor.yr_temperature
+    - sensor.dark_sky_temperature
+    - sensor.yr_wind_speed
+    - sensor.dark_sky_wind_speed
+    - sun.sun

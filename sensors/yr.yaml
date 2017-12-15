@@ -1,0 +1,5 @@
+---
+- platform: yr
+  monitored_conditions:
+    - temperature
+    - windSpeed

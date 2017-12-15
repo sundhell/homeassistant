@@ -1,0 +1,9 @@
+---
+upstairs:
+  name: Övervåning
+  view: 'yes'
+  entities:
+    - switch.fonster_i_eiras_rum
+    - switch.manlampa
+    - switch.fonster_i_gastrum
+    - switch.fonster_i_sovrum

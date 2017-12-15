@@ -1,0 +1,7 @@
+---
+motion_sensors:
+  name: Rörelsesensorer
+  view: 'no'
+  entities:
+    - binary_sensor.trapp_sensor
+    - sensor.trapp_luminance

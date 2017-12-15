@@ -1,0 +1,10 @@
+---
+batteries:
+  name: Batterinivåer
+  entities:
+    - sensor.tradfri_remote_control
+    - sensor.tradfri_wireless_dimmer
+    - sensor.trapp_battery
+    - sensor.altandorr_battery
+    - sensor.ytterdorr_battery
+    - sensor.temp_sensor_battery

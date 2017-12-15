@@ -1,0 +1,48 @@
+---
+- id: notify_when_porch_door_opens
+  alias: "Notifiering att altandörr öppnades"
+  trigger:
+    - entity_id: binary_sensor.altandorr_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - data:
+        message: "Altandörren öppnandes trots att ingen är hemma"
+      service: notify.TELEGRAM
+
+- id: notify_when_front_door_opens
+  alias: "Notifiering att ytterdörr öppnades"
+  trigger:
+    - entity_id: binary_sensor.ytterdorr_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - data:
+        message: "Ytterdörren öppnades trots att ingen är hemma"
+      service: notify.TELEGRAM
+
+- id: notify_at_movement_in_stairway
+  alias: "Notifiering vid rörelse i trapp"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: notify.TELEGRAM
+      data:
+        message: "Rörelse i trappen trots att ingen är hemma"

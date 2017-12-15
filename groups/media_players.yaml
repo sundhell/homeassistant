@@ -1,0 +1,9 @@
+---
+media_players:
+  name: Mediaspelare
+  view: 'yes'
+  entities:
+    - media_player.plex_mediaserver
+    - media_player.roku_1ws3al012963
+    - remote.harmony_hub
+    - sensor.harmony_hub

@@ -1,0 +1,5 @@
+---
+alarm_mode:
+  name: Larmläge
+  initial: 'off'
+  icon: mdi:alarm-light

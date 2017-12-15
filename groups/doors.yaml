@@ -1,0 +1,8 @@
+---
+doors:
+  name: Dörrar
+  view: 'no'
+  entities:
+    - binary_sensor.altandorr_sensor
+    - binary_sensor.ytterdorr_sensor
+    - binary_sensor.dorrklocka

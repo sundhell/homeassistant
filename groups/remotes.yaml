@@ -1,0 +1,7 @@
+---
+remotes:
+  name: Fjärrkontroller
+  view: 'no'
+  entities:
+    - remote.harmony_hub
+    - sensor.harmony_hub

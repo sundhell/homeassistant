@@ -1,0 +1,50 @@
+---
+- platform: template
+  sensors:
+    trapp_battery:
+      friendly_name: "Rörelsesensor trapp"
+      value_template: >-
+        {%- if states.zwave.trapp-%}
+          {{ states.zwave.trapp.attributes.battery_level }}
+        {%- else -%}
+          n/a
+        {%- endif -%}
+      unit_of_measurement: '%'
+      entity_id: zwave.trapp
+
+    ytterdorr_battery:
+      friendly_name: "Dörrsensor ytterdörr"
+      value_template: >-
+        {%- if states.zwave.trapp-%}
+          {{ states.zwave.ytterdorr.attributes.battery_level }}
+        {%- else -%}
+          n/a
+        {%- endif -%}
+      unit_of_measurement: '%'
+      entity_id: zwave.ytterdorr
+
+    altandorr_battery:
+      friendly_name: "Dörrsensor altandörr"
+      value_template: >-
+        {%- if states.zwave.trapp-%}
+          {{ states.zwave.altandorr.attributes.battery_level }}
+        {%- else -%}
+          n/a
+        {%- endif -%}
+      unit_of_measurement: '%'
+      entity_id: zwave.altandorr
+
+    temp_sensor_battery:
+      friendly_name: "Tempsensor utomhus"
+      value_template: >-
+        {%- if states.sensor.utomhus_temperature-%}
+          {{ states.sensor.utomhus_temperature.attributes['Battery numeric'] * 10}}
+        {%- else -%}
+          n/a
+        {%- endif -%}
+      unit_of_measurement: '%'
+      entity_id: sensor.utomhus_temperature
+
+    harmony_hub:
+      friendly_name: 'Harmony Hub aktivitet'
+      value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'

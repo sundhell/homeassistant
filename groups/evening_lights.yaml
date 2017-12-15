@@ -1,0 +1,12 @@
+---
+evening_lights:
+  name: Kvällsbelysning
+  view: 'no'
+  entities:
+    - group.window_lights
+    - group.outdoor_lights
+    - switch.kristallampa
+    - switch.trebenslampa
+    - switch.lightbox
+    - switch.hallampa_switch
+    - light.trappbelysning

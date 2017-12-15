@@ -1,0 +1,6 @@
+---
+commute:
+  name: Västtrafik
+  view: 'no'
+  entities:
+    - sensor.mot_alvangen

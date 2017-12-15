@@ -1,0 +1,8 @@
+---
+modes:
+  name: Lägen
+  view: 'no'
+  entities:
+    - input_boolean.guest_mode
+    - input_boolean.sleep_mode
+    - input_boolean.alarm_mode

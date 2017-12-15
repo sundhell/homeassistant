@@ -1,0 +1,33 @@
+---
+- id: turn_on_stairway_lightning_at_movement
+  alias: "Tänd trappbelysning vid rörelse"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.trapp_luminance
+      below: 5
+  action:
+    - service: light.turn_on
+      entity_id: light.trappbelysning
+      data:
+        brightness: 25
+        color_name: white
+
+- id: turn_off_stairway_lightning_at_no_movement
+  alias: "Släck trappbelysning vid ingen rörelse"
+  trigger:
+    - entity_id: binary_sensor.trapp_sensor
+      from: 'on'
+      platform: state
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.trappbelysning
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.trappbelysning

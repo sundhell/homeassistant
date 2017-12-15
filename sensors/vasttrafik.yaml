@@ -1,0 +1,8 @@
+---
+- platform: vasttrafik
+  key: !secret sensor_vasttrafik_key
+  secret: !secret sensor_vasttrafik_secret
+  departures:
+    - name: Mot älvängen
+      from: Albotorget, Ale
+      heading: Älvängen resecentrum, Ale

@@ -1,0 +1,5 @@
+---
+sleep_mode:
+  name: Sovläge
+  initial: 'off'
+  icon: mdi:hotel

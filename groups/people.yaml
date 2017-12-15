@@ -1,0 +1,7 @@
+---
+people:
+  name: Personer
+  view: 'no'
+  entities:
+    - device_tracker.annas_iphone
+    - device_tracker.owntracks_patrik

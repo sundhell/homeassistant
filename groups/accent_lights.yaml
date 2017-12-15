@@ -1,0 +1,10 @@
+---
+accent_lights:
+  name: Accentbelysning
+  view: 'no'
+  entities:
+    - switch.kristallampa
+    - switch.trebenslampa
+    - switch.lightbox
+    - switch.hallampa_switch
+    - switch.ljusbollar

@@ -1,0 +1,7 @@
+---
+- platform: rfxtrx
+  devices:
+    # 0A520A045C010037340169:
+    0A520A0016010072370179:
+    # 0A520A00E10100262F0169:
+      name: Utomhus

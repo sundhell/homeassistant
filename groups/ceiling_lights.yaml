@@ -1,0 +1,7 @@
+---
+ceiling_lights:
+  name: Taklampor
+  view: 'no'
+  entities:
+    - switch.vind
+    - light.kok
