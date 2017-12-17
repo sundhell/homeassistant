@@ -4,6 +4,8 @@ python:
   - "3.4"
 before_install:
   - mv travis_secrets.yaml secrets.yaml
+  - touch cert.pem
+  - touch privkey.pem
 install:
   - pip3 install homeassistant yamllint
 script:
