@@ -1,7 +1,5 @@
-- name: God kväll
-  entities:
-    group.evening_lights: on
-
+---
 - name: God natt
   entities:
-      group.evening_lights: off
+    group.evening_lights: 'off'
+    remote.harmony_hub: 'off'
