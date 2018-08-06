@@ -109,6 +109,7 @@ influxdb:
   host: !secret influxdb_host
 tts:
   platform: google
+  language: sv
 rfxtrx:
   device: /dev/ttyUSB0
 zwave:
