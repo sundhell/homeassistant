@@ -1,0 +1,10 @@
+---
+- platform: nut
+  name: Eaton 3S UPS
+  host: !secret nut_host
+  resources:
+    - ups.status
+    - ups.model
+    - ups.beeper.status
+    - battery.charge
+    - ups.load
