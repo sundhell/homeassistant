@@ -113,7 +113,7 @@ tts:
 rfxtrx:
   device: /dev/ttyUSB0
 zwave:
-  usb_path: /dev/ttyUSB20
+  usb_path: /dev/ttyAMA0
 mqtt:
   broker: !secret mqtt_broker
   port: 1883
