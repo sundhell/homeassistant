@@ -1,0 +1,11 @@
+---
+- platform: trafikverket_weatherstation
+  name: Stömne vägtemperatur
+  api_key: !secret trafikverket_api_key
+  station: Stömne
+  type: road
+- platform: trafikverket_weatherstation
+  name: Stömne lufttemperatur
+  api_key: !secret trafikverket_api_key
+  station: Stömne
+  type: air
