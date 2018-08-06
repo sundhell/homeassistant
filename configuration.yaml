@@ -132,6 +132,17 @@ google_assistant:
   exposed_domains:
     - switch
     - light
+cloud:
+  google_actions:
+    filter:
+      include_domains:
+        - switch
+        - light
+      include_entities:
+        - group.accent_lights
+        - group.evening_lights
+        - group.outdoor_lights
+        - group.window_lights
 emulated_hue:
   expose_by_default: true
   exposed_domains:
