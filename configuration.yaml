@@ -105,8 +105,6 @@ recorder:
   db_url: !secret recorder_db_url
 http:
   api_password: !secret http_api_password
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
 influxdb:
   host: !secret influxdb_host
 tts:
