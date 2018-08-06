@@ -1,0 +1,12 @@
+---
+- id: start_nodered_at_boot
+  alias: "Start NodeRED vid omstart"
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay:
+        seconds: 120
+    - service: hassio.addon_start
+      data:
+        addon: 27e642c6_nodered
