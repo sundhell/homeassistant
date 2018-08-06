@@ -6,39 +6,39 @@
       name: Vind
 
     # GDR2 A-1
-    7100a0041010000:
+    07100a0041010000:
       name: Lightbox
 
     # GDR2 A-2
-    7100a0041020000:
+    07100a0041020000:
       name: Trebenslampa
 
     # GDR2 A-3
-    7100a0041030000:
+    07100a0041030000:
       name: Ljusbollar
 
     # GDR2 A-4
-    7100a0041040000:
+    07100a0041040000:
       name: Kristallampa
 
     # GDR2 B-2
-    7100a0042020000:
+    07100a0042020000:
       name: Fönster i kök
 
     # GDR2 B-3
-    7100a0042030000:
+    07100a0042030000:
       name: Fönster i gästrum
 
     # GDR2 B-4
-    7100a0042040000:
+    07100a0042040000:
       name: Fönster i sovrum
 
     # GDR2 C-1
-    7100a0043010000:
+    07100a0043010000:
       name: Månlampa
 
     # GDR2 C-2
-    7100a0043020000:
+    07100a0043020000:
       name: Fönster i Eiras rum
 
     0b1100030001010201040f70:
