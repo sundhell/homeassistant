@@ -33,9 +33,11 @@ homeassistant:
     binary_sensor.altandorr_sensor:
       friendly_name: Altandörr
       device_class: opening
+      icon: mdi:door
     binary_sensor.ytterdorr_sensor:
       friendly_name: Ytterdörr
       device_class: opening
+      icon: mdi:door
     sensor.trapp_luminance:
       hidden: false
     sensor.cpu_temperatur:
@@ -48,6 +50,72 @@ homeassistant:
       hidden: false
     sensor.altandorr_battery:
       hidden: false
+    sensor.tradfri_remote_control:
+      friendly_name: Trådfri fjärrkortroll
+      icon: mdi:battery
+    sensor.tradfri_wireless_dimmer:
+      friendly_name: Trådfri dimmer
+      icon: mdi:battery
+    sensor.tradfri_motion_sensor:
+      friendly_name: Trådfri rörelsesensor
+      icon: mdi:battery
+    sensor.stomne_vagtemperatur:
+      icon: mdi:road-variant
+    sensor.stomne_lufttemperatur:
+      icon: mdi:thermometer
+    group.all_automations:
+      hidden: false
+
+    sensor.pollen_gras:
+      friendly_name: Gräs
+      icon: mdi:flower
+
+    sensor.pollen_hassel:
+      friendly_name: Hassel
+      icon: mdi:flower
+
+    sensor.pollen_al:
+      friendly_name: Al
+      icon: mdi:leaf
+
+    sensor.pollen_salg_vide:
+      friendly_name: Sälg / vide
+      icon: mdi:leaf
+
+    sensor.pollen_grabo:
+      friendly_name: Gråbo
+      icon: mdi:flower
+
+    sensor.pollen_bok:
+      friendly_name: Bok
+      icon: mdi:leaf
+
+    sensor.pollen_alm:
+      friendly_name: Alm
+      icon: mdi:leaf
+
+    sensor.pollen_bjork:
+      friendly_name: Björk
+      icon: mdi:leaf
+
+    sensor.pollen_ek:
+      friendly_name: Ek
+      icon: mdi:flower
+
+    group.default_view:
+      order: 1
+
+    group.floors:
+      order: 2
+
+    group.monitoring:
+      order: 3
+
+    group.media_players:
+      order: 4
+
+    group.misc:
+      order: 5
 
   customize_domain:
     switch:
@@ -59,6 +127,8 @@ homeassistant:
       homebridge_hidden: true
 
   customize_glob:
+    "sensor.*_battery":
+      icon: mdi:battery
     "sensor.patriks*":
       hidden: true
     "sensor.annas*":
