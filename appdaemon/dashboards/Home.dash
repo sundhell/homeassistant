@@ -1,0 +1,104 @@
+---
+title: Home
+widget_dimensions: [120, 120]
+widget_size: [1, 1]
+widget_margins: [5, 5]
+columns: 8
+global_parameters:
+  use_comma: 1
+  precision: 1
+  state_text: 1
+default_skin: hygge
+
+clock:
+  widget_type: clock
+  time_format: 24hr
+  show_seconds: 1
+evening_lights:
+  widget_type: switch
+  title: Kvällsbelysning
+  entity: group.evening_lights
+  icon_on: mdi-lightbulb-on
+  icon_off: mdi-lightbulb
+accent_lights:
+  widget_type: switch
+  title: Accentbelysning
+  entity: group.accent_lights
+  icon_on: mdi-lightbulb-on
+  icon_off: mdi-lightbulb
+window_lights:
+  widget_type: switch
+  title: Fönsterbelysning
+  entity: group.window_lights
+  icon_on: mdi-lightbulb-on
+  icon_off: mdi-lightbulb
+outdoor_lights:
+  widget_type: switch
+  title: Utebelysning
+  entity: group.outdoor_lights
+  icon_on: mdi-lightbulb-on
+  icon_off: mdi-lightbulb
+front_door:
+  widget_type: binary_sensor
+  title: Ytterdörr
+  entity: binary_sensor.ytterdorr_sensor
+  icon_on: mdi-door-open
+  icon_off: mdi-door-closed
+back_door:
+  widget_type: binary_sensor
+  title: Altandörr
+  entity: binary_sensor.altandorr_sensor
+  icon_on: mdi-door-open
+  icon_off: mdi-door-closed
+guest_mode:
+  widget_type: input_boolean
+  title: Gästläge
+  entity: input_boolean.guest_mode
+  icon_on: fa-user
+  icon_off: fa-user
+sleep_mode:
+  widget_type: input_boolean
+  title: Sovläge
+  entity: input_boolean.sleep_mode
+  icon_on: fa-hotel
+  icon_off: fa-hotel
+patrik:
+  widget_type: device_tracker
+  title: Patrik
+  entity: device_tracker.owntracks_patrik
+  state_map:
+   "home": "hemma"
+   "not_home": "borta"
+anna:
+  widget_type: device_tracker
+  title: Anna
+  entity: device_tracker.annas_iphone
+  state_map:
+   "home": "hemma"
+   "not_home": "borta"
+downstairs:
+  widget_type: switch
+  title: Bottenplan
+  entity: group.downstairs
+  icon_on: mdi-border-bottom
+  icon_off: mdi-border-bottom
+upstairs:
+  widget_type: switch
+  title: Övervåning
+  entity: group.upstairs
+  icon_on: mdi-border-horizontal
+  icon_off: mdi-border-horizontal
+attic:
+  widget_type: switch
+  title: Vind
+  entity: group.attic
+  icon_on: mdi-border-top
+  icon_off: mdi-border-top
+
+layout:
+  - clock(2x1), spacer(2x1), sleep_mode, guest_mode, patrik, anna
+  - spacer(6x1), front_door, back_door
+  -
+  - evening_lights, accent_lights, window_lights, outdoor_lights, spacer(1x1), downstairs, upstairs, attic
+
+# vim: set ft=yaml:
