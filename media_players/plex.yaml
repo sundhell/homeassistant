@@ -1,0 +1,4 @@
+---
+- platform: plex
+  entity_namespace: "plex"
+  use_episode_art: true
