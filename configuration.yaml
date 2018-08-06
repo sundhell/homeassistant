@@ -81,6 +81,8 @@ history:
   exclude:
     entities:
       - sensor.mot_alvangen
+      - device_tracker.annas_iphone
+      - device_tracker.owntracks_patrik
 logbook:
   exclude:
     entities:
@@ -96,7 +98,6 @@ logger:
 frontend:
 config:
 conversation:
-map:
 sun:
 updater:
 ios:
