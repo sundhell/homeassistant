@@ -231,6 +231,7 @@ panel_iframe:
   grafana:
     title: 'Grafana'
     icon: mdi:elevation-rise
+    # yamllint disable-line rule:line-length
     url: 'https://grafana.sundhall.se/dashboard/db/hemovervakning?refresh=1m&orgId=1&theme=light&kiosk=true'
   nodered_flows:
     title: 'Node-RED'
