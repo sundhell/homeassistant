@@ -113,6 +113,7 @@ tts:
 rfxtrx:
   device: /dev/ttyUSB0
 zwave:
+  autoheal: false
   usb_path: /dev/ttyAMA0
 mqtt:
   broker: !secret mqtt_broker
