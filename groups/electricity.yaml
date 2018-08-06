@@ -1,0 +1,5 @@
+---
+electricity:
+  name: Elektricitet
+  entities:
+    - sensor.electricity_price_kyrkbacken_19

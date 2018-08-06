@@ -1,0 +1,10 @@
+---
+misc:
+  name: Övrigt
+  view: 'yes'
+  icon: mdi:flash-circle
+  entities:
+    - group.all_automations
+    - group.motion_sensors
+    - group.doors
+    - group.commute

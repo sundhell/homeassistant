@@ -1,0 +1,15 @@
+---
+default_view:
+  name: Hem
+  view: 'yes'
+  icon: mdi:home
+  entities:
+    - device_tracker.annas_iphone
+    - device_tracker.owntracks_patrik
+    - group.modes
+    - group.accent_lights
+    - group.window_lights
+    - group.outdoor_lights
+    - group.ceiling_lights
+    - group.evening_lights
+    - switch.manlampa

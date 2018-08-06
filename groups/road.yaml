@@ -1,0 +1,7 @@
+---
+road:
+  name: Vägförhållanden
+  view: 'no'
+  entities:
+    - sensor.stomne_vagtemperatur
+    - sensor.stomne_lufttemperatur

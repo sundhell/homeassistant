@@ -4,6 +4,7 @@ batteries:
   entities:
     - sensor.tradfri_remote_control
     - sensor.tradfri_wireless_dimmer
+    - sensor.tradfri_motion_sensor
     - sensor.trapp_battery
     - sensor.altandorr_battery
     - sensor.ytterdorr_battery

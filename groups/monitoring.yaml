@@ -1,0 +1,13 @@
+---
+monitoring:
+  name: Monitorering
+  view: 'yes'
+  icon: mdi:chart-bar
+  entities:
+    - group.ups
+    - group.raspberry_pi
+    - group.batteries
+    - group.electricity
+    - group.weather
+    - group.pollen
+    - group.road

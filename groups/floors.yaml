@@ -1,0 +1,9 @@
+---
+floors:
+  name: Våningar
+  view: 'yes'
+  icon: mdi:floor-plan
+  entities:
+    - group.attic
+    - group.upstairs
+    - group.downstairs

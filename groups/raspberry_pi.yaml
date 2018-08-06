@@ -4,3 +4,8 @@ raspberry_pi:
   view: 'no'
   entities:
     - sensor.cpu_temperatur
+    - sensor.cpu_used
+    - sensor.disk_used_
+    - sensor.ram_used
+    - sensor.swap_used
+    - sensor.average_load_1m

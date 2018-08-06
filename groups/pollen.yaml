@@ -1,0 +1,14 @@
+---
+pollen:
+  name: Pollen
+  view: 'no'
+  entities:
+    - sensor.pollen_gras
+    - sensor.pollen_hassel
+    - sensor.pollen_al
+    - sensor.pollen_salg_vide
+    - sensor.pollen_grabo
+    - sensor.pollen_bok
+    - sensor.pollen_alm
+    - sensor.pollen_bjork
+    - sensor.pollen_ek

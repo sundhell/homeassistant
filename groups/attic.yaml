@@ -1,6 +1,6 @@
 ---
 attic:
   name: Vind
-  view: 'yes'
+  view: 'no'
   entities:
     - switch.vind

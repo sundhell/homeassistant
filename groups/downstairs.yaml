@@ -1,7 +1,7 @@
 ---
 downstairs:
   name: Nedervåning
-  view: 'yes'
+  view: 'no'
   entities:
     - switch.kristallampa
     - switch.ljusbollar
@@ -11,3 +11,4 @@ downstairs:
     - switch.hallampa_switch
     - light.trappbelysning
     - light.kok
+    - light.trappforrad

@@ -1,0 +1,10 @@
+---
+ups:
+  name: UPS
+  view: 'no'
+  entities:
+    - sensor.eaton_3s_ups_status_data
+    - sensor.eaton_3s_ups_model
+    - sensor.eaton_3s_ups_beeper_status
+    - sensor.eaton_3s_ups_load
+    - sensor.eaton_3s_ups_battery_charge
