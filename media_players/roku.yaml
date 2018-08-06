@@ -1,2 +1,3 @@
 ---
 - platform: roku
+  host: 192.168.1.37
