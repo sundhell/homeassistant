@@ -48,3 +48,187 @@
     harmony_hub:
       friendly_name: 'Harmony Hub aktivitet'
       value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
+
+    pollen_gras:
+      friendly_name: "Pollen: gräs"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gräs', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_hassel:
+      friendly_name: "Pollen: hassel"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Hassel', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_al:
+      friendly_name: "Pollen: al"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Al', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_salg_vide:
+      friendly_name: "Pollen: sälg /vide"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Sälg / vide', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_grabo:
+      friendly_name: "Pollen: grabo"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Gråbo', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_bok:
+      friendly_name: "Pollen: bok"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Bok', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_alm:
+      friendly_name: "Pollen: alm"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Alm', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_bjork:
+      friendly_name: "Pollen: björk"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Björk', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_ek:
+      friendly_name: "Pollen: ek"
+      value_template: >-
+        {% if is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'i.h.') -%}
+        inga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'L') -%}
+        låga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'L-M') -%}
+        låga-måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'M') -%}
+        måttliga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'M-H') -%}
+        måttliga-höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'H') -%}
+        höga halter
+        {%- elif is_state_attr('sensor.pollenkoll_goteborg', 'Ek', 'H-H+') -%}
+        mycket höga halter
+        {%- endif %}
+    pollen_summary:
+      friendly_name: "Pollen: sammanfattning"
+      value_template: >-
+        {# Låga halter #}
+        {%- for entity_id in states.group.pollen.attributes.entity_id if states(entity_id) == 'låga halter' or states(entity_id) == 'låga-måttliga halter' -%}
+        {% set parts = entity_id.split('.') -%}
+        {%- if loop.first %}Låga halter av {% elif loop.last %} och {% else %}, {% endif -%}{{ states[parts[0]][parts[1]].name | lower }}
+        {%- if loop.last %}.{%- endif %}
+        {%- endfor %}
+        {# Måttliga halter #}
+        {%- for entity_id in states.group.pollen.attributes.entity_id if states(entity_id) == 'måttliga halter' or states(entity_id) == 'måttliga-höga halter' -%}
+        {% set parts = entity_id.split('.') -%}
+        {%- if loop.first %}Måttliga halter av {% elif loop.last %} och {% else %}, {% endif -%}{{ states[parts[0]][parts[1]].name | lower }}
+        {%- if loop.last %}.{%- endif %}
+        {%- endfor %}
+        {# Höga halter #}
+        {%- for entity_id in states.group.pollen.attributes.entity_id if states(entity_id) == 'höga halter' or states(entity_id) == 'mycket höga halter' -%}
+        {% set parts = entity_id.split('.') -%}
+        {%- if loop.first %}Höga halter av {% elif loop.last %} och {% else %}, {% endif -%}{{ states[parts[0]][parts[1]].name | lower }}
+        {%- if loop.last %}.{%- endif %}
+        {%- endfor %}

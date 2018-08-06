@@ -1,0 +1,5 @@
+---
+- platform: pollenkoll
+  sensors:
+    - city: Göteborg
+      state: Al
