@@ -157,6 +157,15 @@ telegram_bot:
 tradfri:
   host: !secret tradfri_host
   allow_tradfri_groups: false
+panel_iframe:
+  grafana:
+    title: 'Grafana'
+    icon: mdi:elevation-rise
+    url: 'https://grafana.sundhall.se/dashboard/db/hemovervakning?refresh=1m&orgId=1&theme=light&kiosk=true'
+  nodered_flows:
+    title: 'Node-RED'
+    icon: mdi:nodejs
+    url: 'https://nodered.sundhall.se'
 
 
 ############
