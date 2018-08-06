@@ -154,6 +154,9 @@ telegram_bot:
     allowed_chat_ids:
       - !secret notify_telegram_chat_id_1
       - !secret notify_telegram_chat_id_2
+tradfri:
+  host: !secret tradfri_host
+  allow_tradfri_groups: false
 
 
 ############
