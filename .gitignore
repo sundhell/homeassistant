@@ -5,6 +5,7 @@ www/
 .DS_STORE
 .uuid
 .spotify-token-cache
+.storage
 *.xml
 *.conf
 *.pem
