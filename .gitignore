@@ -19,3 +19,4 @@ __pycache__/
 zwave_device_config.yaml
 secrets.yaml
 known_devices.yaml
+entity_registry.yaml
