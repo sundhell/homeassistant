@@ -124,6 +124,7 @@ homeassistant:
     media_player:
       homebridge_hidden: true
     device_tracker:
+      hidden: true
       homebridge_hidden: true
 
   customize_glob:
